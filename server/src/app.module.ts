@@ -17,9 +17,7 @@ import { AuthModule } from './auth/auth.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
-
-// const mongodbURI = "mongodb+srv://ahmad:ahmad@cluster0.98apco4.mongodb.net/?retryWrites=true&w=majority/backend";
-const mongodbURI = "mongodb://0.0.0.0/backend";
+import { mongodbURI } from './keys';
 
 @Module({
   imports: [MongooseModule.forRoot(mongodbURI),
