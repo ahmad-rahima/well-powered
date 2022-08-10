@@ -18,8 +18,11 @@ import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
 
+const mongodbURI = "mongodb+srv://ahmad:ahmad@cluster0.98apco4.mongodb.net/?retryWrites=true&w=majority/backend";
+// const mongodbURI = "mongodb://0.0.0.0/backend";
+
 @Module({
-  imports: [MongooseModule.forRoot("mongodb://0.0.0.0/backend"),
+  imports: [MongooseModule.forRoot(mongodbURI),
             ServeStaticModule.forRoot({
               rootPath: join(__dirname, '..', 'client')
             }),
