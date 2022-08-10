@@ -9,30 +9,34 @@ import * as bcrypt from 'bcrypt';
 export class UsersService {
     constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
-    // async onModuleInit() {
-    //     const username = 'admin';
-    //     const password = await bcrypt.hash('admin', 10);
-
-    //     const user = new this.userModel({
-    //         username,
-    //         password
-    //     });
-    //     await user.save();
-    // }
-
     async create(username: string, password: string) {
+        // delete all users
+        await this.userModel.deleteMany().exec();
+
+        // encrypt the password
         password = await bcrypt.hash(password, 10);
 
+        // create the user obj/document
         const user = new this.userModel({
             username,
             password
         });
-        console.log(user);
-        await user.save();
+
+        // save
+        return await user.save();
     }
 
-    findOne(username: string): Promise<User | undefined> {
-        // return this.users.find(user => user.username === username);
-        return this.userModel.findOne({ username }).exec();
+    async findOne(username: string): Promise<User | undefined> {
+        let user: User = await this.userModel.findOne({ username }).exec();
+
+        return user;
+    }
+
+    async findById(id: string) {
+        return await this.userModel.findById(id).exec();
+    }
+
+    findAll() {
+        return this.userModel.find().exec();
     }
 }

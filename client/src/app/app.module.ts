@@ -64,6 +64,8 @@ import { ItemDeletorComponent } from './editors/recordable-comps/item-deletor/it
 import { ItemDeletorService } from './editors/recordable-comps/item-deletor/item-deletor.service';
 import { ItemSubmitterComponent } from './editors/recordable-comps/item-submitter/item-submitter.component';
 import { ItemSubmitterService } from './editors/recordable-comps/item-submitter/item-submitter.service';
+import { AdminService } from './editors/admin/admin.service';
+import { AdminComponent } from './editors/admin/admin.component';
 
 
 @Injectable()
@@ -97,6 +99,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     LogoutComponent,
     ItemDeletorComponent,
     ItemSubmitterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -156,6 +159,7 @@ export class MyHammerConfig extends HammerGestureConfig {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig,
     },
+    AdminService
   ],
   bootstrap: [AppComponent]
 })

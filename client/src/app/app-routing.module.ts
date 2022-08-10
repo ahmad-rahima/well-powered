@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AbstractChartsComponent } from './abstract-charts/abstract-charts.component';
 import { AppGuard } from './app.guard';
+import { AdminComponent } from './editors/admin/admin.component';
 import { CollegesComponent } from './editors/colleges/colleges.component';
 import { PowersComponent } from './editors/powers/powers.component';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +19,7 @@ const routes: Routes = [
 
   { path: '', canActivate: [AppGuard], children: [
     { path: 'login', component: LoginComponent, pathMatch: 'full' },
+    { path: 'users', component: AdminComponent, pathMatch: 'full' },
     { path: 'logs', component: LogsComponent, pathMatch: 'full'},
 
     { path: 'powers', component: PowersComponent, pathMatch: 'full' },

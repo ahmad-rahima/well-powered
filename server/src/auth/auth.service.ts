@@ -20,8 +20,8 @@ export class AuthService {
         if (user) {
             const isMatch = await bcrypt.compare(pass, <string>user.password);
             if (isMatch) {
-                const { password, ...result } = user;
-                return result;
+                const { username, _id: userId } = user;
+                return { username, userId };
             }
         }
         return null;
@@ -30,7 +30,7 @@ export class AuthService {
     async login(user: any) {
         const log: Log = {
             type: PRT.Info,
-            content: `${user._doc.username} just logged in.`,
+            content: `${user.username} just logged in.`,
             date: new Date(),
         };
         this.logsService.push(log);

@@ -21,9 +21,7 @@ export class PowersComponent implements OnInit, OnDestroy {
   constructor(
     private fb: FormBuilder,
     private powersService: PowersService,
-    private navRecordsKeeper: NavRecordsKeeperService,
     private route: ActivatedRoute,
-    private http: HttpClient
   ) { }
   ngOnDestroy(): void {
     console.log("PowersSerivce: OnDestroy");
