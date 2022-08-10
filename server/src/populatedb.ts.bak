@@ -1,0 +1,34 @@
+
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { MockService } from './mock.service';
+
+import { POWERS } from './populatedb/powers-data';
+import { PowersService } from './powers/powers.service';
+import { Power } from './powers/schemas/power.schema';
+
+let powers: Power[] = [];
+
+let powersService: PowersService;
+
+async function populatePowers() {
+    let promises = [];
+
+    for (let p of POWERS) {
+        promises.push(powersService.create(p));
+    }
+
+    await Promise.all(promises)
+        .then(res => powers = res)
+        .catch(err => console.log(`populatePowers failed: ${err}`));
+}
+
+async function bootstrap() {
+    const app = await NestFactory.createApplicationContext(AppModule);
+    powersService = app.get(PowersService);
+    await populatePowers();
+
+    console.log('Finished');
+    app.close();
+}
+bootstrap();

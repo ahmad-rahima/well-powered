@@ -1,0 +1,69 @@
+
+:host {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#main {
+  box-shadow: darkgrey 8px 7px 7px 7px;
+  border-radius: 24px;
+  width: 90vw;
+  max-width: 1000px;
+  margin: 10px;
+  padding: 10px;
+}
+
+div#main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-width: 500px;
+}
+
+div.powers {
+  margin: 40px 0;
+
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+div.power-box {
+  border-radius: 20px;
+  box-shadow: black 5px 5px 5px 5px;
+  margin: 20px;
+  padding: 50px;
+  max-width: 500px;
+
+}
+
+div.combined {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+
+div.power-name-active {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 700px) {
+  div.power-box {
+    box-sizing: border-box;
+    width: 90vw;
+    padding: 8vh 6vw;
+    margin: 0 0 1vh 0;
+  }
+}

@@ -1,0 +1,32 @@
+
+:host {
+  width: 90vw;
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: darkgrey 8px 7px 7px 7px;
+  border-radius: 24px;
+}
+
+div {
+  width: 75%;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.err {
+  border-radius: 42px;
+  padding: 20px 40px;
+  margin: 20px;
+  font: 1.3em;
+  background-color: #ffc5c2;
+  border: #c60000 solid 2px;
+  // box-shadow: #c60000  0px 8px 8px;
+}

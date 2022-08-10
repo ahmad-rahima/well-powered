@@ -1,0 +1,94 @@
+// import { Location } from "@angular/common";
+// import { HttpClient } from "@angular/common/http";
+// import { ActivatedRoute } from "@angular/router";
+// import { EMPTY, Observable, Subscription } from "rxjs";
+// import { DateSelectorComponent } from "src/app/date-selector/date-selector.component";
+// import { DateSelectorService } from "src/app/date-selector/date-selector.service";
+// import { DateRange } from "src/app/interfaces/date-range";
+// import { NavRecordsKeeperService } from "src/app/nav-records/nav-records-keeper.service";
+// import { AbstractChartsComponent } from "../abstract-charts.component";
+// import { ChartsHandler } from "./charts-handler";
+// import { Injectable } from '@angular/core';
+
+
+// // URL: total/:chartTarget
+// @Injectable()
+// export class TotalChartsHandlerService implements ChartsHandler {
+//     readonly CHART_TYPE = 'total';
+//     dateObserver$!: Subscription;
+//     route!: ActivatedRoute;
+//     charts!: AbstractChartsComponent;
+
+//     constructor(
+//         private http: HttpClient,
+//         private dateSelectorService: DateSelectorService,
+//         private location: Location,
+//         private navRecordsKeeper: NavRecordsKeeperService,
+//     ) {}
+
+//     onInit(charts: AbstractChartsComponent) {
+//         this.charts = charts;
+//         this.route = charts.route;
+
+//         this.navRecordsKeeper.record(DateSelectorComponent);
+
+//         this.initSettings();
+//         this.observeChanges();
+//         this.updateLocation();
+//         this.fetch();
+//     }
+
+//     onChanges() {
+//         this.updateLocation();
+//         this.fetch();
+//     }
+
+//     onDestroy() {
+//         this.dateObserver$.unsubscribe();
+//     }
+
+//     initSettings() {
+//         this.initDate();
+//     }
+
+//     initDate() {
+//         const { paramMap } = this.route.snapshot;
+//         let start: any = paramMap.get('start');
+//         let end: any = paramMap.get('end');
+
+//         if (Date.parse(start) && Date.parse(end)) {
+//             start = new Date(start);
+//             end = new Date(end);
+//             this.dateSelectorService.updateDateRange({ start, end });
+//         }
+//     }
+
+//     observeChanges() {
+//         this.dateObserver$ = this.dateSelectorService.dates$
+//             .subscribe(
+//                 (_) => { this.onChanges(); }
+//             );
+//     }
+
+//     get date(): DateRange {
+//         let { start, end } = this.dateSelectorService;
+//         return { start, end };
+//     }
+
+//     get baseUrl(): string {
+//         const chartTarget = this.route.snapshot.paramMap.get('chartTarget');
+//         return `charts/${this.CHART_TYPE}/${chartTarget}`;
+//     }
+
+//     updateLocation(): void {
+//         let { start, end }: any = this.date;
+//         start = start.toISOString().split('T')[0];
+//         end = end.toISOString().split('T')[0];
+
+//         this.location.go(`${this.baseUrl}/days/${start}/${end}`);
+//     }
+
+//     fetch() {
+//         this.charts.chartOptions$ = this.http.get('api' + this.location.path());
+//     }
+// }

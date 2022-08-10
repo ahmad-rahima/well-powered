@@ -1,0 +1,22 @@
+<div>
+  <!-- <ul>
+       <li *ngFor="let opt of options$ | async">
+       <button type="button" (click)="selectOption(opt)" [class.selected]="false">
+       {{ opt.name }}
+       </button>
+       </li>
+       </ul> -->
+
+  <mat-select
+    required
+    placeholder='Enter to select'
+    (selectionChange)="selectOption($event)"
+    [(ngModel)]="selected"
+  >
+    <mat-option *ngFor="let opt of options$ | async"
+            [value]="opt._id">
+      {{opt.name}}
+    </mat-option>
+  </mat-select>
+
+</div>

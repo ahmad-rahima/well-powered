@@ -1,0 +1,19 @@
+
+mat-select {
+  width: 400px;
+  height: 10px;
+  margin: 50px;
+}
+
+:host {
+  flex: auto 1 1;
+  position: relative;
+  top: -15px;
+}
+
+@media (max-width: 700px) {
+  mat-select {
+    width: 100%;
+
+  }
+}

@@ -1,0 +1,36 @@
+<div class="main" color="primary">
+  <div class="row">
+    <div class="col-lg-12 text-center" style="padding-top: 20px;">
+      <div class="container box" style="margin-top: 10px; padding-left: 0px; padding-right: 0px;">
+        <div class="row">
+          <div class="col-12" style="text-align: center;">
+            <form [formGroup]="formData" (ngSubmit)="onSubmit(formData.value)"
+                  class="form-signin">
+              <h2 class="form-signin-heading">Well Powered</h2>
+
+              <div class="div-input">
+                <mat-form-field color="accent">
+                  <mat-label for="username" class="sr-only">Username: </mat-label>
+                  <input matInput type="text" id="username" class="form-control"
+                         formControlName="username" placeholder="Username" required autofocus>
+                </mat-form-field>
+
+                <mat-form-field color="accent">
+                  <mat-label for="inputPassword" class="sr-only">Password</mat-label>
+                  <input matInput type="password" id="inputPassword" class="form-control"
+                         formControlName="password" placeholder="Password" required>
+                </mat-form-field>
+              </div>
+
+              <!-- <div class="div-input">
+                   </div> -->
+
+
+              <button mat-button class="btn btn-lg btn-primary btn-block" type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div>
+  <h2>Resource:</h2>
+  <p *ngIf="msg !== ''" class="err">*ERROR*: Resource can not be added. there are some faculties depend on it. <br/>Delete them first.</p>
+
+  <form form="ngForm" [formGroup]="powerForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label for="name">Resource Name:</mat-label>
+      <input required="true" matInput id="name" type="text" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label for="unit">Resource Unit: </mat-label>
+      <input required matInput id="unit" type="text" formControlName="unit" placeholder="G, Watt, etc...">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label for="color">Resource Color:</mat-label>
+      <input matInput id="color" type="color" formControlName="color">
+    </mat-form-field>
+
+    <!-- <p>Complete the form to enable button.</p>
+         <button mat-raised-button type="submit" [disabled]="!powerForm.valid">Submit</button> -->
+  </form>
+</div>

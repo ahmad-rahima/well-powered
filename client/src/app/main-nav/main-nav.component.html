@@ -1,0 +1,66 @@
+<mat-sidenav-container
+  class="sidenav-container" >
+
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false"
+  >
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list
+      (swipeleft)="drawer.close()"
+      >
+      <a mat-list-item routerLink="/charts/interval/college" (click)="refreshCharts()">
+        Interval College Charts
+      </a>
+      <a mat-list-item routerLink="/charts/interval/power" (click)="refreshCharts()">
+        Interval Power Charts
+      </a>
+      <a mat-list-item routerLink="/charts/total/colleges" (click)="refreshCharts()">
+        Total Colleges Charts
+      </a>
+      <a mat-list-item routerLink="/charts/total/powers" (click)="refreshCharts()">
+        Total Powers Charts
+      </a>
+      <a mat-list-item routerLink="/charts/monitor/college" (click)="refreshCharts()">
+        Realtime College Charts
+      </a>
+      <a mat-list-item routerLink="/charts/monitor/power" (click)="refreshCharts()">
+        Realtime Powers Charts
+      </a>
+      <a mat-list-item routerLink="/powers">
+        Resources
+      </a>
+      <a mat-list-item routerLink="/colleges">
+        Faculties
+      </a>
+      <a mat-list-item routerLink="/logs">
+        Logs
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content
+    (swiperight)="drawer.open()">
+    <mat-toolbar color="primary">
+      <button
+        class="menu"
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="title">Well Powered</span>
+
+      <div id="banner-container">
+        <app-nav-records-ad-banner id="banner"></app-nav-records-ad-banner>
+      </div>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <div id="main-content" >
+
+      <ng-content></ng-content>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

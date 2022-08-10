@@ -1,0 +1,8 @@
+
+<app-main-nav *ngIf="loggedIn(); else auth">
+  <router-outlet></router-outlet>
+</app-main-nav>
+
+<ng-template #auth>
+  <router-outlet></router-outlet>
+</ng-template>

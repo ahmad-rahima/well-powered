@@ -1,0 +1,116 @@
+
+:host {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.div-input {
+    background-color: white;
+    border-radius: 48px;
+    // height: 52px;
+    // margin: 16px;
+}
+
+form {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: stretch;
+    align-content: stretch;
+}
+
+.main {
+  background-color: #0d47a1;
+  width: 400px;
+  height: 500px;
+  padding: 24px;
+  margin: 20px 0;
+  box-shadow: 12px 12px 8px darkgray;
+  border-radius: 26px;
+}
+
+.form-signin-heading {
+  color: yellow;
+  font-style: italic;
+  font-size: 2em;
+  letter-spacing: .1em;
+  text-decoration: underline;
+  padding-bottom: 24px;
+}
+
+.form-signin {
+  display: flex;
+  flex-direction: column;
+  align-content: space-around;
+  justify-content: space-between;
+  height: 100%;
+}
+
+mat-form-field {
+  // height: 64px;
+  width: 80%;
+  margin: 0 12px;
+}
+
+
+.form-signin {
+   max-width: 330px;
+
+   padding: 15px;
+   margin: 0 auto;
+}
+
+button {
+  background-color: white;
+  border-radius: 16px;
+  margin-top: 16px;
+}
+
+
+// mat-icon-stepper selected color change
+::ng-deep .mat-step-header .mat-step-icon-selected, .mat-step-header .mat-step-icon-state-done, .mat-step-header .mat-step-icon-state-edit {
+    background-color: black !important;
+}
+
+//input outline color
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: black !important;
+    // opacity: 1!important;
+}
+
+//mat-input focused color
+::ng-deep .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
+    color: black !important;
+}
+
+// mat-input error outline color
+::ng-deep .mat-form-field-appearance-outline.mat-form-field-invalid.mat-form-field-invalid .mat-form-field-outline-thick{
+    color: black !important;
+    opacity: 0.8!important;
+}
+
+// mat-input carent color
+::ng-deep .mat-input-element {
+    caret-color: black !important;
+}
+
+// mat-input error carent color
+::ng-deep .mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {
+    caret-color: black !important;
+}
+
+// mat-label normal state style
+::ng-deep .mat-form-field-label {
+    color: rgba(0,0,0,.6) !important;
+    // color: $mainColor!important;
+}
+
+// mat-label focused style
+::ng-deep .mat-form-field.mat-focused .mat-form-field-label {
+    color: black !important;
+}
+
+// mat-label error style
+::ng-deep .mat-form-field.mat-form-field-invalid .mat-form-field-label {
+    color: black !important;
+}

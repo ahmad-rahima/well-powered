@@ -1,0 +1,89 @@
+<div id="main">
+  <h2>Faculty:</h2>
+
+  <form form="ngForm" [formGroup]="collegeForm" (ngSubmit)="onSubmit()">
+    <mat-form-field>
+      <mat-label for="name">Name:</mat-label>
+      <input matInput id="name" type="text" formControlName="name">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label for="desc">Description:</mat-label>
+      <input matInput id="desc" type="text" formControlName="description">
+    </mat-form-field>
+
+
+    <mat-form-field>
+      <mat-label for="desc">Email:</mat-label>
+      <input matInput id="desc" type="email" formControlName="email">
+    </mat-form-field>
+
+    <button mat-raised-button type="button" (click)="addPower()">+ Add Another Resource</button>
+
+    <div formArrayName="powers" class="powers">
+      <div *ngFor="let power of powers.controls; let i=index" class="power-box">
+        <!-- <label for="power-{{ i  }}">{{ i }}:</label> -->
+        <div [formControlName]="i">
+          <div [formGroupName]="i">
+            <div class="power-name-active">
+              <mat-form-field>
+                <mat-label for="power-name">Resources</mat-label>
+                <mat-select id="power-name" formControlName="name">
+                  <mat-option *ngFor="let power of powers$ | async"
+                              [value]="power.name">
+                    {{ power.name }}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+              <mat-slide-toggle [id]="'power-active' + i" formControlName="active">Active</mat-slide-toggle>
+
+            </div>
+            <!-- <mat-form-field>
+                 <mat-label for="power-name">Resources</mat-label>
+                 <input matInput id="power-name" type="text" formControlName="name">
+                 </mat-form-field> -->
+
+            <div class="combined">
+              <mat-form-field>
+                <mat-label for="min-span">Min span: <em>(sec)</em></mat-label>
+                <input matInput id="min-span" type="number" formControlName="minSpan">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label for="max-span">Max span: <em>(sec)</em></mat-label>
+                <input matInput id="max-span" type="number" formControlName="maxSpan">
+              </mat-form-field>
+            </div>
+
+            <div class="combined">
+              <mat-form-field>
+                <mat-label for="min-amt">Min amount:</mat-label>
+                <input matInput id="min-amt" type="number" formControlName="minAmt">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label for="max-amt">Max amount:</mat-label>
+                <input matInput id="max-amt" type="number" formControlName="maxAmt">
+              </mat-form-field>
+            </div>
+
+            <div class="combined">
+              <mat-form-field>
+                <mat-label for="warn">Warning constraint:</mat-label>
+                <input matInput id="warn" type="number" formControlName="warn">
+              </mat-form-field>
+
+              <mat-form-field>
+                <mat-label for="err">Force-Shutdown constraint:</mat-label>
+                <input matInput id="err" type="number" formControlName="err">
+              </mat-form-field>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <button mat-raised-button type="submit" [disabled]="!collegeForm.valid">Submit</button> -->
+
+  </form>
+</div>

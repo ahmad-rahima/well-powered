@@ -1,0 +1,29 @@
+
+// * {
+//   margin: 0;
+//   padding: 0;
+// }
+
+mat-hint {
+  visibility: hidden;
+}
+
+div {
+  position: relative;
+  // right: 5%;
+  top: -10px;
+  width: 100%;
+}
+
+:host {
+  background-color: white;
+  color: black;
+  border-radius: 48px;
+  max-height: 50px;
+}
+
+@media (max-width: 1500px) {
+  :host {
+    max-height: 70px;
+  }
+}

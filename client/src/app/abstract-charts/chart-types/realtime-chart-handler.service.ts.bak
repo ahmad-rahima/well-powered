@@ -1,0 +1,104 @@
+// import { HttpClient } from "@angular/common/http";
+// import { Injectable } from "@angular/core";
+// import { ActivatedRoute } from "@angular/router";
+// import { Socket } from "ngx-socket-io";
+// import { fromEvent, Observable, Subscription } from "rxjs";
+// import { AsideOptionsComponent } from "src/app/aside-options/aside-options.component";
+// import { AsideOptionsService } from "src/app/aside-options/aside-options.service";
+// import { NavRecordsKeeperService } from "src/app/nav-records/nav-records-keeper.service";
+// import { AbstractChartsComponent } from "../abstract-charts.component";
+// import { ChartsHandler } from "./charts-handler";
+// import { Location } from '@angular/common';
+
+
+// // URL: monitor/:chartTarget/:id
+// @Injectable()
+// export class RealtimeChartHandlerService implements ChartsHandler {
+//     readonly CHART_TYPE = 'monitor';
+//     selectedId: string | null = null;
+//     charts!: AbstractChartsComponent;
+//     route!: ActivatedRoute;
+//     optionObserver$!: Subscription;
+
+//     constructor(
+//         private http: HttpClient,
+//         private location: Location,
+//         private navRecordsKeeper: NavRecordsKeeperService,
+//         private asideOptionsService: AsideOptionsService
+//     ) {}
+
+//     onInit(charts: AbstractChartsComponent): void {
+//         this.charts = charts;
+//         this.route = charts.route;
+
+//         this.navRecordsKeeper.record(AsideOptionsComponent);
+
+//         this.initSettings();
+//         this.observeChanges();
+//     }
+
+//     onChanges(): void {
+//         this.updateLocation();
+//         this.fetch();
+//     }
+
+//     onDestroy(): void {
+//         this.optionObserver$.unsubscribe();
+//     }
+
+//     initSettings() {
+//         this.initId();
+//         this.initOptions();
+//     }
+
+//     initId() {
+//         const { paramMap } = this.route.snapshot;
+//         this.selectedId = paramMap.get('id');
+//     }
+
+//     initOptions() {
+//         const chartTarget = this.route.snapshot.paramMap.get('chartTarget');
+//         const options$ = this.http.get(`api/${chartTarget}s`);
+//         this.asideOptionsService.take(options$);
+//     }
+
+//     observeChanges() {
+//         this.optionObserver$ = this.asideOptionsService.observer()
+//             .subscribe(
+//                 id => { this.selectOption(id) }
+//             )
+//     }
+
+
+//     fetch(): void {
+//         if (!this.validForChange()) return;
+//         this.charts.chartOptions$ = this.http.get('api/' + this.location.path());
+//     }
+
+//     get chartTarget(): string {
+//         return this.route.snapshot.paramMap.get('chartTarget') || '';
+//     }
+
+//     get baseUrl(): string {
+//         const chartTarget = this.route.snapshot.paramMap.get('chartTarget');
+//         return `charts/${this.CHART_TYPE}/${chartTarget}`;
+//     }
+
+//     get selectedUrl(): string {
+//         return `${this.baseUrl}/${this.selectedId}`;
+//     }
+
+//     validForChange(): boolean {
+//         return !!this.selectedId;
+//     }
+
+//     selectOption(id: string) {
+//         this.selectedId = id;
+//         this.onChanges();
+//     }
+
+//     updateLocation(): void {
+//         this.location.go(`${this.selectedUrl}`);
+//     }
+
+// }

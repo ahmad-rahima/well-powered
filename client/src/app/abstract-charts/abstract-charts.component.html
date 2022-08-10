@@ -1,0 +1,18 @@
+<div class="main">
+
+  <div fxLayout="row" fxLayoutAlign="space-between center" fxLayoutGap="10px" class="stats-cards"
+       class="cards">
+
+    <!-- iterate over cards -->
+    <div *ngFor="let opt of chartOptions$ | async">
+      <mat-card>
+        <app-abstract-chart-card [chartOptions]="opt">
+        </app-abstract-chart-card>
+      </mat-card>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- <ng-abstract-charts [powers]="" [colleges]="" [dates]="" [type]="type" > -->

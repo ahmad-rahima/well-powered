@@ -1,0 +1,42 @@
+
+.main {
+  margin: 30px;
+}
+
+.cards {
+ display: flex;
+ gap: 25px;
+ flex-wrap: wrap;
+ justify-content: center;
+}
+
+mat-card {
+  background-color: white;
+  box-shadow: 5px 5px 20px black;
+  border-radius: 20px;
+
+  box-sizing: border-box;
+  width: 90vw;
+  // height: 80vw;
+  margin-bottom: 1vh;
+  // padding: 5vh 0;
+}
+
+@media (min-width: 700px) {
+
+  mat-card:hover {
+    // transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    -webkit-transform: scale(1.15);
+    -webkit-transition: transform .8s ease-in-out;
+    z-index: 1;
+  }
+
+  mat-card {
+    background-color: white;
+    min-width: 500px;
+    box-shadow: 5px 5px 20px black;
+    border-radius: 20px;
+    width: auto;
+  }
+
+}
