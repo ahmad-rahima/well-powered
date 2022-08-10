@@ -1,0 +1,4 @@
+
+apiVersion: 1.0.0
+metadata:
+  name: crw-in-crw-out
