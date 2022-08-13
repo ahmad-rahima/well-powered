@@ -31,13 +31,15 @@ export class CollegesComponent implements OnInit, OnDestroy {
   }
 
   subscriptions: any[] = [];
+  powersArray: any;
+
   ngOnInit(): void {
     this.powers$ = this.collegesService.getPowers();
     this.collegesService.onInit(this.id);
 
     this.powerGroup = this.fb.group({
       name: [''],
-      active: [''],
+      active: [false],
       minSpan: [''],
       maxSpan: [''],
       minAmt: [''],
@@ -46,14 +48,17 @@ export class CollegesComponent implements OnInit, OnDestroy {
       err: [''],
     });
 
+    this.powersArray = this.fb.array([
+
+    ]);
+
     this.collegeForm = this.fb.group({
       name: ['', [
         Validators.required, Validators.minLength(3), Validators.maxLength(70)
       ]],
       description: ['', Validators.maxLength(500)],
       email: ['', Validators.email],
-      powers: this.fb.array([
-      ])
+      powers: this.powersArray
     });
 
     if (this.id)
@@ -83,7 +88,23 @@ export class CollegesComponent implements OnInit, OnDestroy {
     return this.route.snapshot.paramMap.get('id') || '';
   }
 
+  get controls() {
+    return (<FormArray>this.collegeForm.get('powers')).controls
+  }
+
+  checkErrors() {
+    const powers = this.collegeForm.value['powers'].map((p: any) => p.name);
+    const hasDups = (new Set(powers)).size !== powers.length;
+    this.msg = `College form can not have duplicate resources.
+please give every resource card a unique resource.`;
+
+    return hasDups;
+  }
+
   onSubmit() {
+    if (this.checkErrors()) return;
+
+    this.msg = '';
     this.collegesService.updateItem(this.id, this.collegeForm.value)
       .pipe(first())
       .subscribe(_ => console.log('finished submitting.'));
@@ -110,6 +131,25 @@ export class CollegesComponent implements OnInit, OnDestroy {
 
   addPower() {
     // this.powers.push(this.powerGroup);
-    this.powers.setControl(this.powers.length, this.powerGroup);
+    // this.powers.setControl(this.powers.length, this.powerGroup);
+
+    this.powers.push(this.fb.group({
+      name: [''],
+      active: [false],
+      minSpan: [''],
+      maxSpan: [''],
+      minAmt: [''],
+      maxAmt: [''],
+      warn: [''],
+      err: [''],
+    }))
+  }
+
+  onDelete(i: number) {
+    this.powers.removeAt(i);
+  }
+
+  printValue($event: any) {
+    console.log($event.value);
   }
 }

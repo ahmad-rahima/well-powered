@@ -39,4 +39,8 @@ export class UsersService {
     findAll() {
         return this.userModel.find().exec();
     }
+
+    drop() {
+        return this.userModel.remove().exec();
+    }
 }

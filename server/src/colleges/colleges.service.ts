@@ -36,4 +36,8 @@ export class CollegesService {
         await this.collegeModel.findByIdAndDelete(collegeId).exec();
         this.deletes.next(collegeId);
     }
+
+    drop() {
+        return this.collegeModel.remove().exec();
+    }
 }

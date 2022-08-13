@@ -156,4 +156,8 @@ export class ConsumptionService {
             docs.forEach(c => c.remove());
         }).exec();
     }
+
+    drop() {
+        return this.consumptionModel.remove().exec();
+    }
 }

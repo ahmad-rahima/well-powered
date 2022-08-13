@@ -14,7 +14,7 @@ logs
 npm-debug.log*
 
 # compiled output
-dist/
+# dist/
 
 # client output for server
-server/client
+# server/client

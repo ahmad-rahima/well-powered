@@ -19,8 +19,9 @@ import { join } from 'path';
 
 import { mongodbURI } from './keys';
 
+// console.log(process.env.OPENSHIFT_MONGODB_DB_URL);
 @Module({
-  imports: [MongooseModule.forRoot(mongodbURI),
+  imports: [MongooseModule.forRoot(process.env.OPENSHIFT_MONGODB_DB_URL || mongodbURI),
             ServeStaticModule.forRoot({
               rootPath: join(__dirname, '..', 'client')
             }),

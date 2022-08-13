@@ -12,7 +12,6 @@ export class AppController implements OnModuleInit {
   ) {}
 
   onModuleInit() {
-
   }
 
   @UseGuards(LocalAuthGuard)

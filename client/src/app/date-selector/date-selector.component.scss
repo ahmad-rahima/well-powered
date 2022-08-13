@@ -22,6 +22,15 @@ div {
   max-height: 50px;
 }
 
+
+mat-form-field {
+  visibility: hidden;
+}
+
+mat-form-field * {
+  visibility: visible;
+}
+
 @media (max-width: 1500px) {
   :host {
     max-height: 70px;

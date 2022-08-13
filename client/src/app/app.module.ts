@@ -25,7 +25,7 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 
 
 // --------------------------------------------------
-import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatDatepickerModule, MAT_DATE_RANGE_SELECTION_STRATEGY} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -66,6 +66,7 @@ import { ItemSubmitterComponent } from './editors/recordable-comps/item-submitte
 import { ItemSubmitterService } from './editors/recordable-comps/item-submitter/item-submitter.service';
 import { AdminService } from './editors/admin/admin.service';
 import { AdminComponent } from './editors/admin/admin.component';
+import { AboutModule } from './about/about.module';
 
 
 @Injectable()
@@ -99,7 +100,7 @@ export class MyHammerConfig extends HammerGestureConfig {
     LogoutComponent,
     ItemDeletorComponent,
     ItemSubmitterComponent,
-    AdminComponent
+    AdminComponent,
   ],
   imports: [
     BrowserModule,
@@ -132,7 +133,8 @@ export class MyHammerConfig extends HammerGestureConfig {
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
     }),
-    LogsModule
+    LogsModule,
+    AboutModule
   ],
   providers: [
     {
@@ -159,7 +161,7 @@ export class MyHammerConfig extends HammerGestureConfig {
       provide: HAMMER_GESTURE_CONFIG,
       useClass: MyHammerConfig,
     },
-    AdminService
+    AdminService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,9 +1,9 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.ngproject.wellpowered',
+  appId: 'com.wellpowered.app',
   appName: 'Well Powered',
-  webDir: 'dist',
+  webDir: 'dist/adr-project',
   bundledWebRuntime: false
 };
 

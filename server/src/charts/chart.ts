@@ -31,6 +31,7 @@ export function Chart(type: string, title: string, xAxis: any[], xTitle: string,
     this.tooltip = {
         headerFormat: `${title}<br>${xTitle}<br>`,
         pointFormat: 'Consumption: {point.y}',
+        valueSuffix: `k${Chart.units.get(title)}`,
         shared: true,
         valueDecimals: 2,
     };

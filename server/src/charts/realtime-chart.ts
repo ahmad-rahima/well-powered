@@ -23,5 +23,5 @@ export function RealtimeChart(type: string, [title, subTitle]: [string, string])
     }]
 
     this.series[0].color = Chart.colors.get(title) || Chart.colors.get(subTitle);
-    this.tooltip.valueSuffix = Chart.units.get(title) || Chart.units.get(subTitle);
+    this.tooltip.valueSuffix = 'k' + Chart.units.get(title) || Chart.units.get(subTitle);
 }

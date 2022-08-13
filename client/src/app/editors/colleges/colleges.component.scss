@@ -24,7 +24,7 @@ div#main {
 form {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 90%;
   max-width: 500px;
 }
 
@@ -41,7 +41,7 @@ div.powers {
 
 div.power-box {
   border-radius: 20px;
-  box-shadow: black 5px 5px 5px 5px;
+  border: darkgrey solid 2px;
   margin: 20px;
   padding: 50px;
   max-width: 500px;
@@ -52,6 +52,10 @@ div.combined {
   display: flex;
   flex-direction: row;
   padding: 10px;
+}
+
+div.combined > * {
+  width: 50%;
 }
 
 div.power-name-active {
@@ -66,4 +70,15 @@ div.power-name-active {
     padding: 8vh 6vw;
     margin: 0 0 1vh 0;
   }
+}
+
+
+.err {
+  border-radius: 42px;
+  padding: 20px 40px;
+  margin: 20px;
+  font: 1.3em;
+  background-color: #ffc5c2;
+  border: #c60000 solid 2px;
+  // box-shadow: #c60000  0px 8px 8px;
 }

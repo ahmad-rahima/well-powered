@@ -52,4 +52,8 @@ export class PowersService {
     deleteOne(powerId: Types.ObjectId) {
         return this.powerModel.findByIdAndDelete(powerId).exec();
     }
+
+    drop() {
+        return this.powerModel.remove().exec();
+    }
 }

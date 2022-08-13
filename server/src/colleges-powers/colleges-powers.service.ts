@@ -115,6 +115,8 @@ export class CollegesPowersService {
         let powers = collegeDto.powers;
         delete collegeDto.powers; // powers not in collegeModel, so delete it
 
+        await this.cpModel.deleteMany({ college: collegeId }).exec();
+
         this.collegesService.updateOne(collegeId, <College>collegeDto);
 
         for (let p of powers) {
@@ -184,5 +186,9 @@ export class CollegesPowersService {
 
     deleteByPower(powerId: Types.ObjectId) {
         return this.powersService.deleteOne(powerId);
+    }
+
+    drop() {
+        return this.cpModel.remove().exec();
     }
 }

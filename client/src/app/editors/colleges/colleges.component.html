@@ -1,6 +1,7 @@
 <div id="main">
   <h2>Faculty:</h2>
 
+  <p *ngIf="msg !== ''" class="err"> ERROR: {{ msg }} </p>
   <form form="ngForm" [formGroup]="collegeForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label for="name">Name:</mat-label>
@@ -23,19 +24,21 @@
     <div formArrayName="powers" class="powers">
       <div *ngFor="let power of powers.controls; let i=index" class="power-box">
         <!-- <label for="power-{{ i  }}">{{ i }}:</label> -->
-        <div [formControlName]="i">
+        <button (click)="onDelete(i)">X</button>
+        <!-- <div [formControlName]="i"> -->
           <div [formGroupName]="i">
             <div class="power-name-active">
               <mat-form-field>
-                <mat-label for="power-name">Resources</mat-label>
-                <mat-select id="power-name" formControlName="name">
+                <mat-label for="'power-name' + i">Resources</mat-label>
+                <mat-select [id]="'power-name' + i" [formControlName]="'name'" #Select (selectionChange)="printValue(Select)">
                   <mat-option *ngFor="let power of powers$ | async"
-                              [value]="power.name">
+                              [value]="power.name" >
                     {{ power.name }}
                   </mat-option>
                 </mat-select>
               </mat-form-field>
               <mat-slide-toggle [id]="'power-active' + i" formControlName="active">Active</mat-slide-toggle>
+
 
             </div>
             <!-- <mat-form-field>
@@ -81,7 +84,6 @@
           </div>
         </div>
       </div>
-    </div>
 
     <!-- <button mat-raised-button type="submit" [disabled]="!collegeForm.valid">Submit</button> -->
 

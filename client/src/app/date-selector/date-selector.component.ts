@@ -14,9 +14,15 @@ export class DateSelectorComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.startHolder = this.start;
         this.endHolder = this.end;
+
+        this.sub = this.dateSelectorService.dates$.subscribe(d => {
+            this.startHolder = d.start;
+            this.endHolder = d.end;
+        });
     }
 
     range: any;
+    sub: any;
 
     constructor(private dateSelectorService: DateSelectorService) {
     }
@@ -39,5 +45,6 @@ export class DateSelectorComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this.sub.unsubscribe();
     }
 }

@@ -5,5 +5,5 @@ export function IntervalChart(type: string, [title, subTitle]: [string, string],
     Chart.call(this, type, title, dates, subTitle, data);
 
     this.series[0].color = Chart.colors.get(title) || Chart.colors.get(subTitle);
-    this.tooltip.valueSuffix = Chart.units.get(title) || Chart.units.get(subTitle);
+    this.tooltip.valueSuffix = 'k' + Chart.units.get(title) || Chart.units.get(subTitle);
 }

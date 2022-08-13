@@ -77,7 +77,12 @@ mat-sidenav-content {
 }
 
 
+
 @media (max-width: 1500px) {
+
+  #banner > div > *:last-child {
+    margin-bottom: 24px;
+  }
 
   .mat-toolbar.mat-primary {
     padding: 24px 24px 0 0;

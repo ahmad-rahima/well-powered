@@ -4,15 +4,15 @@
 }
 
 .cards {
- display: flex;
- gap: 25px;
- flex-wrap: wrap;
- justify-content: center;
+  display: flex;
+  gap: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 mat-card {
   background-color: white;
-  box-shadow: 5px 5px 20px black;
+  // box-shadow: 5px 5px 20px black;
   border-radius: 20px;
 
   box-sizing: border-box;
@@ -20,6 +20,7 @@ mat-card {
   // height: 80vw;
   margin-bottom: 1vh;
   // padding: 5vh 0;
+
 }
 
 @media (min-width: 700px) {
@@ -34,7 +35,7 @@ mat-card {
   mat-card {
     background-color: white;
     min-width: 500px;
-    box-shadow: 5px 5px 20px black;
+    // box-shadow: 5px 5px 20px black;
     border-radius: 20px;
     width: auto;
   }

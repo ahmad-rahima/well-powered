@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { SwPush } from "@angular/service-worker";
 import { AuthService } from './auth.service';
+import { DOCUMENT } from '@angular/common';
 
 
 @Component({
@@ -9,18 +10,15 @@ import { AuthService } from './auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   title = 'Well Powered';
 
   constructor(
     private swPush: SwPush,
     private http: HttpClient,
-    private authService: AuthService
+    private authService: AuthService,
+    @Inject(DOCUMENT) private document: Document
   ) {
-
-  }
-
-  async ngOnInit() {
   }
 
   loggedIn() {

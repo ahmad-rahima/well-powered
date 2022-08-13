@@ -32,6 +32,7 @@ export class PopulateDBService {
     ) {}
 
     async populate() {
+
         await this.populateUsers();
         await this.populatePowers();
         await this.populateColleges();
@@ -40,12 +41,14 @@ export class PopulateDBService {
     }
 
     private async populateUsers() {
-        this.usersService.create('admin', 'admin');
+        await this.usersService.drop();
+        await this.usersService.create('admin', 'admin');
     }
 
     private async populatePowers() {
         let promises = [];
 
+        await this.powersService.drop();
         for (let p of POWERS) {
             promises.push(this.powersService.create(p));
         }
@@ -58,6 +61,7 @@ export class PopulateDBService {
     private async populateColleges() {
         let promises = [];
 
+        await this.collegesService.drop();
         for (let c of COLLEGES) {
             promises.push(this.collegesService.create(c));
         }
@@ -70,6 +74,7 @@ export class PopulateDBService {
     private async populateCollegePower() {
         let promises = [];
 
+        await this.collegesPowersService.drop();
         for (let cp of COLLEGES_POWERS) {
             let [ college, power ] = [ this.colleges[cp.college], this.powers[cp.power] ];
             let {minSpan, maxSpan, minAmt, maxAmt, warn, err} = cp;
@@ -91,6 +96,7 @@ export class PopulateDBService {
     private async populateConsumption() {
         let promises = [];
 
+        await this.consumptionService.drop();
         for (let { college, power } of this.cp) {
 
             // set up `Date`
